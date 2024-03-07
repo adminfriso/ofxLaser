@@ -37,7 +37,8 @@ jobs:
     - name: replace emptyExample with example_HelloLaser
       run: cp -r ${{ github.workspace }}/addons/ofxLaser/example_HelloLaser ${{ github.workspace }}/examples/templates/emptyExample
 
-    # continue openframeworks defined pipeline    - name: ccache
+    # continue openframeworks defined pipeline    
+    - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         # key: ${{ matrix.os }}-${{ matrix.type }}
