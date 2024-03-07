@@ -2,8 +2,12 @@
 # # This is a generic template to serve as a base for your custom config
 # # See: https://circleci.com/docs/configuration-reference
 version: 2.1
+
+orbs:
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+
 jobs:
-  build:
+  build-mac:
     macos:
       xcode: 15.2.0
 
@@ -11,11 +15,25 @@ jobs:
       # Commands will execute in macOS container
       # with Xcode 14.2.0 installed
       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
-      - run: cd apps
+      - run: cd openFrameworks/apps
       - checkout
       - run: cd example_HelloLaser
       - run: rm bin/stdin.log bin/stdout.log bin/stderr.log
       - run: xcodebuild -scheme "example_HelloLaser Debug" build && open bin/example_HelloLaserDebug.app -i bin/stdin.log -o bin/stdout.log --stderr bin/stderr.log
+  
+  build-windows:
+    executor: win/default # executor type
+
+    steps:
+      # Commands are run in a Windows virtual machine environment
+      - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
+      - run: cd openFrameworks/apps
+      - checkout
+      - run: cd example_HelloLaser
+      - run: Write-Host 'Hello, Windows'
+
+
+
 # jobs:
 #   test:
 #     docker:
