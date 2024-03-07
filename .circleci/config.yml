@@ -28,7 +28,7 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
       - run: cd openFrameworks/apps
-      - run: git clone --depth=1 --branch=master https://github.com/sebleedelisle/ofxLaser
+      - run: git clone --depth=1 --branch=master https://github.com/sebleedelisle/ofxLaser.git
       - run: cd example_HelloLaser
       - run: Write-Host 'Hello, Windows'
 
