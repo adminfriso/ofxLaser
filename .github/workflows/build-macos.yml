@@ -27,7 +27,7 @@ jobs:
       with:
         path: ${{ github.workspace }}/openFrameworks/addons
     - name: remove emptyExample
-      run: rm ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
+      run: rm -r ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
     - name: replace emptyExample
       run: cp -r ${{ github.workspace }}/openFrameworks/addons/ofxLaser/example_HelloLaser ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
     - name: ccache
