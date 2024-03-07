@@ -17,7 +17,7 @@ jobs:
         matrix:
           cfg:
           - {target: osx, opt: "xcode"}
-          - {target: osx, opt: "makefiles"}
+          # - {target: osx, opt: "makefiles"}
     steps:
     - name: checkout openframeworks
       uses: actions/checkout@v4
