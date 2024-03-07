@@ -18,9 +18,9 @@ jobs:
         msystem:
         - mingw64
         # - ucrt64
-    defaults:
-      run:
-        shell: msys2 {0}
+    # defaults:
+    #   run:
+    #     shell: msys2 {0}
     steps:
     - name: checkout openframeworks
       uses: actions/checkout@v4
@@ -57,11 +57,11 @@ jobs:
         # wget
         
     - name: Install dependencies
-      run: ./scripts/ci/msys2/install.sh
+      run: msys2 ./scripts/ci/msys2/install.sh
 
     - name: Build
-      run: ./scripts/ci/msys2/build.sh
+      run: msys2 ./scripts/ci/msys2/build.sh
 
     - name: Run tests
-      run: ./scripts/ci/msys2/run_tests.sh
+      run: msys2 ./scripts/ci/msys2/run_tests.sh
 
