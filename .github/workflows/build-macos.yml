@@ -22,14 +22,13 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: openframeworks/openFrameworks
-        path: ${{ github.workspace }}/openFrameworks
     - uses: actions/checkout@v4
       with:
-        path: ${{ github.workspace }}/openFrameworks/addons/ofxLaser
+        path: ${{ github.workspace }}/addons/ofxLaser
     - name: remove emptyExample
-      run: rm -r ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
+      run: rm -r ${{ github.workspace }}/examples/templates/emptyExample
     - name: replace emptyExample
-      run: cp -r ${{ github.workspace }}/openFrameworks/addons/ofxLaser/example_HelloLaser ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
+      run: cp -r ${{ github.workspace }}/addons/ofxLaser/example_HelloLaser ${{ github.workspace }}/examples/templates/emptyExample
     - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:

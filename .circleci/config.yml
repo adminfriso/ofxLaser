@@ -1,42 +1,42 @@
-# # Couldn't automatically generate a config from your source code.
-# # This is a generic template to serve as a base for your custom config
-# # See: https://circleci.com/docs/configuration-reference
-version: 2.1
+# # # Couldn't automatically generate a config from your source code.
+# # # This is a generic template to serve as a base for your custom config
+# # # See: https://circleci.com/docs/configuration-reference
+# version: 2.1
 
-orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+# orbs:
+#   win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
-jobs:
-  build_mac:
-    macos:
-      xcode: 15.2.0
+# jobs:
+#   build_mac:
+#     macos:
+#       xcode: 15.2.0
 
-    steps:
-      # Commands will execute in macOS container
-      # with Xcode 14.2.0 installed
-      - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
-      - run: pwd
-      - run: cd openFrameworks/apps && git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
-      - run: pwd
-      #- run: rm bin/stdin.log bin/stdout.log bin/stderr.log
-      - run: cd openFrameworks/apps/ofxLaser/example_HelloLaser && xcodebuild -scheme "example_HelloLaser Debug" build && open bin/example_HelloLaserDebug.app -i bin/stdin.log -o bin/stdout.log --stderr bin/stderr.log
+#     steps:
+#       # Commands will execute in macOS container
+#       # with Xcode 14.2.0 installed
+#       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
+#       - run: pwd
+#       - run: cd openFrameworks/apps && git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
+#       - run: pwd
+#       #- run: rm bin/stdin.log bin/stdout.log bin/stderr.log
+#       - run: cd openFrameworks/apps/ofxLaser/example_HelloLaser && xcodebuild -scheme "example_HelloLaser Debug" build && open bin/example_HelloLaserDebug.app -i bin/stdin.log -o bin/stdout.log --stderr bin/stderr.log
   
-  build_windows:
-    executor: win/default # executor type
+#   build_windows:
+#     executor: win/default # executor type
 
-    steps:
-      # Commands are run in a Windows virtual machine environment
-      - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
-      - run: cd openFrameworks/apps
-      - run: git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
-      - run: cd ofxLaser/example_HelloLaser
-      #- run: Write-Host 'Hello, Windows'
-      - run: msbuild example_HelloLaser.sln /t:build /nologo /noautoresponse /maxcpucount /p:Configuration=Release
+#     steps:
+#       # Commands are run in a Windows virtual machine environment
+#       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
+#       - run: cd openFrameworks/apps
+#       - run: git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
+#       - run: cd ofxLaser/example_HelloLaser
+#       #- run: Write-Host 'Hello, Windows'
+#       - run: msbuild example_HelloLaser.sln /t:build /nologo /noautoresponse /maxcpucount /p:Configuration=Release
 
-workflows:
-  build_mac:
-    jobs:
-      - build_mac
-  build_windows:
-    jobs:
-      - build_windows
+# workflows:
+#   build_mac:
+#     jobs:
+#       - build_mac
+#   build_windows:
+#     jobs:
+#       - build_windows
