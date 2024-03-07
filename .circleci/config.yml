@@ -5,13 +5,17 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 15.3.0
+      xcode: 15.2.0
 
     steps:
       # Commands will execute in macOS container
       # with Xcode 14.2.0 installed
+      - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
+      - run: cd apps
       - checkout
-      - run: xcodebuild -version
+      - run: cd example_HelloLaser
+      - run: rm bin/stdin.log bin/stdout.log bin/stderr.log
+      - run: xcodebuild -scheme "example_HelloLaser Debug" build && open bin/example_HelloLaserDebug.app -i bin/stdin.log -o bin/stdout.log --stderr bin/stderr.log
 # jobs:
 #   test:
 #     docker:
