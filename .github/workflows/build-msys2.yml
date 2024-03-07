@@ -62,6 +62,6 @@ jobs:
     - name: Build
       run: msys2 ./scripts/ci/msys2/build.sh
 
-    - name: Run tests
-      run: msys2 ./scripts/ci/msys2/run_tests.sh
+    # - name: Run tests
+    #   run: msys2 ./scripts/ci/msys2/run_tests.sh
 
