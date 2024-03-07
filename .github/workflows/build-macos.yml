@@ -25,7 +25,7 @@ jobs:
         path: ${{ github.workspace }}/openFrameworks
     - uses: actions/checkout@v4
       with:
-        path: ${{ github.workspace }}/openFrameworks/addons
+        path: ${{ github.workspace }}/openFrameworks/addons/ofxLaser
     - name: remove emptyExample
       run: rm -r ${{ github.workspace }}/openFrameworks/examples/templates/emptyExample
     - name: replace emptyExample
