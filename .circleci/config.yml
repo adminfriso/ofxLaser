@@ -17,7 +17,7 @@ jobs:
       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
       - run: cd openFrameworks/apps
       - run: git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
-      - run: cd example_HelloLaser
+      - run: cd ofxLaser/example_HelloLaser
       - run: rm bin/stdin.log bin/stdout.log bin/stderr.log
       - run: xcodebuild -scheme "example_HelloLaser Debug" build && open bin/example_HelloLaserDebug.app -i bin/stdin.log -o bin/stdout.log --stderr bin/stderr.log
   
@@ -29,7 +29,7 @@ jobs:
       - run: git clone --depth=1 --branch=master https://github.com/openframeworks/openFrameworks
       - run: cd openFrameworks/apps
       - run: git clone --depth=1 --branch=main https://github.com/sebleedelisle/ofxLaser
-      - run: cd example_HelloLaser
+      - run: cd ofxLaser/example_HelloLaser
       - run: Write-Host 'Hello, Windows'
 
 
